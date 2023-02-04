@@ -1,5 +1,5 @@
-import faker from '@faker-js/faker';
-import { prisma } from '@/config';
+import faker from "@faker-js/faker";
+import { prisma } from "@/config";
 
 export async function createHotel() {
   return prisma.hotel.create({
@@ -22,8 +22,8 @@ export async function createRooms(hotelId: number) {
 
 export async function returnRooms(hotelId: number) {
   return prisma.room.findMany({
-    where:{
+    where: {
       hotelId
     }
-  })
+  });
 }

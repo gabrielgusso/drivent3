@@ -1,7 +1,7 @@
-import { AuthenticatedRequest } from '@/middlewares';
-import hotelService from '@/services/hotels-service';
-import { Response } from 'express';
-import httpStatus from 'http-status';
+import { AuthenticatedRequest } from "@/middlewares";
+import hotelService from "@/services/hotels-service";
+import { Response } from "express";
+import httpStatus from "http-status";
 
 export async function getHotels(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
@@ -10,10 +10,10 @@ export async function getHotels(req: AuthenticatedRequest, res: Response) {
 
     return res.status(httpStatus.OK).send(hotels);
   } catch (error) {
-    if (error.name === 'notPaid') {
+    if (error.name === "notPaid") {
       return res.sendStatus(httpStatus.PAYMENT_REQUIRED);
     }
-    if (error.name === 'NotFoundError') {
+    if (error.name === "NotFoundError") {
       return res.sendStatus(httpStatus.NOT_FOUND);
     }
     return res.sendStatus(httpStatus.BAD_REQUEST);
@@ -29,10 +29,10 @@ export async function getHotelRoom(req: AuthenticatedRequest, res: Response) {
 
     return res.status(httpStatus.OK).send(ticketTypes);
   } catch (error) {
-    if (error.name === 'notPaid') {
+    if (error.name === "notPaid") {
       return res.sendStatus(httpStatus.PAYMENT_REQUIRED);
     }
-    if (error.name === 'NotFoundError') {
+    if (error.name === "NotFoundError") {
       return res.sendStatus(httpStatus.NOT_FOUND);
     }
     return res.sendStatus(httpStatus.BAD_REQUEST);
